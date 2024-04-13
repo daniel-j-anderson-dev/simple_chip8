@@ -23,7 +23,7 @@ impl<const N: usize> AddressStack<N> {
             Some(address)
         } else {
             None
-        }
+        };
     }
     pub fn push(&mut self, address: u16) -> Option<()> {
         self.pointer = self.pointer.saturating_add(1);
