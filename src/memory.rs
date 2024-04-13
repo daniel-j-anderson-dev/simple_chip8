@@ -1,8 +1,8 @@
 pub mod opcode;
+pub use self::opcode::*;
 
 use std::ops::{Deref, DerefMut};
 
-use self::opcode::*;
 
 #[derive(Debug)]
 pub struct Memory<const CAPACITY: usize> {
@@ -19,10 +19,9 @@ impl<const N: usize> Memory<N> {
     }
     pub fn get_current_instruction(&self) -> Option<Opcode> {
         let program_counter = self.program_counter as usize;
-        let most_significant_byte = self.get(program_counter)?;
-        let least_significant_byte = self.get(program_counter + 1)?;
-        let current_instruction =
-            Opcode::merge_bytes(*most_significant_byte, *least_significant_byte);
+        let most_significant = self.get(program_counter)?;
+        let least_significant = self.get(program_counter + 1)?;
+        let current_instruction = Opcode::merge_bytes(*most_significant, *least_significant);
         return Some(current_instruction);
     }
 }
