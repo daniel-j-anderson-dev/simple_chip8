@@ -13,3 +13,8 @@ impl DerefMut for IRegister {
         return &mut self.0;
     }
 }
+impl From<u16> for IRegister {
+    fn from(value: u16) -> Self {
+        return Self(value);
+    }
+}
