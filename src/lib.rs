@@ -1,9 +1,9 @@
 pub mod memory;
 pub mod registers;
 pub mod test;
-pub mod ui;
+pub mod user_interface;
 
-pub use crate::{memory::*, registers::*, ui::*};
+use crate::{memory::*, registers::*, user_interface::*};
 
 #[derive(Debug, Default)]
 pub struct Chip8 {
