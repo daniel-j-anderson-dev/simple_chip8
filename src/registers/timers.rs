@@ -2,6 +2,11 @@ use std::ops::{Deref, DerefMut};
 
 #[derive(Debug, Default)]
 pub struct DelayTimer(u8);
+impl DelayTimer {
+    pub fn update(&mut self) {
+        self.0 = self.0.saturating_sub(1);
+    }
+}
 impl Deref for DelayTimer {
     type Target = u8;
     fn deref(&self) -> &Self::Target {
@@ -21,6 +26,11 @@ impl From<u8> for DelayTimer {
 
 #[derive(Debug, Default)]
 pub struct SoundTimer(u8);
+impl SoundTimer {
+    pub fn update(&mut self) {
+        self.0 = self.0.saturating_sub(1);
+    }
+}
 impl Deref for SoundTimer {
     type Target = u8;
     fn deref(&self) -> &Self::Target {
