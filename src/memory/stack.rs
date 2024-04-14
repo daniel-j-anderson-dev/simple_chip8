@@ -1,11 +1,11 @@
 use std::ops::{Deref, DerefMut};
 
 #[derive(Debug)]
-pub struct AddressStack<const CAPACITY: usize> {
+pub struct Stack<const CAPACITY: usize> {
     addresses: [u16; CAPACITY],
     pointer: u8,
 }
-impl<const N: usize> AddressStack<N> {
+impl<const N: usize> Stack<N> {
     pub fn pointer(&self) -> u8 {
         return self.pointer as u8;
     }
@@ -38,18 +38,18 @@ impl<const N: usize> AddressStack<N> {
     }
 }
 
-impl<const N: usize> Deref for AddressStack<N> {
+impl<const N: usize> Deref for Stack<N> {
     type Target = [u16; N];
     fn deref(&self) -> &Self::Target {
         return &self.addresses;
     }
 }
-impl<const N: usize> DerefMut for AddressStack<N> {
+impl<const N: usize> DerefMut for Stack<N> {
     fn deref_mut(&mut self) -> &mut Self::Target {
         return &mut self.addresses;
     }
 }
-impl<const N: usize> Default for AddressStack<N> {
+impl<const N: usize> Default for Stack<N> {
     fn default() -> Self {
         return Self {
             addresses: [0; N],

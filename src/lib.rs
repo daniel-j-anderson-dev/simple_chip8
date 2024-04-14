@@ -1,17 +1,14 @@
-pub mod display;
-pub mod keypad;
 pub mod memory;
 pub mod registers;
-pub mod stack;
-pub mod font;
 pub mod test;
+pub mod ui;
 
-pub use crate::{display::*, memory::*, registers::*, stack::*, keypad::*, font::*};
+pub use crate::{memory::*, registers::*, ui::*};
 
 #[derive(Debug, Default)]
 pub struct Chip8 {
     memory: Memory<4096>,
-    stack: AddressStack<16>,
+    stack: Stack<16>,
     sound_timer: SoundTimer,
     delay_timer: DelayTimer,
     v: VRegisters,

@@ -1,5 +1,7 @@
 pub mod opcode;
-pub use self::opcode::*;
+pub mod stack;
+
+pub use self::{opcode::*, stack::*};
 
 use std::ops::{Deref, DerefMut};
 
