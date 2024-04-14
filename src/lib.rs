@@ -3,9 +3,10 @@ pub mod keypad;
 pub mod memory;
 pub mod registers;
 pub mod stack;
+pub mod font;
 pub mod test;
 
-pub use crate::{display::*, memory::*, registers::*, stack::*, keypad::*};
+pub use crate::{display::*, memory::*, registers::*, stack::*, keypad::*, font::*};
 
 #[derive(Debug, Default)]
 pub struct Chip8 {
