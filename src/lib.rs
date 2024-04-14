@@ -4,7 +4,7 @@ pub mod test;
 pub mod error;
 pub mod user_interface;
 
-use crate::{error::*,memory::*,registers::*,user_interface::*};
+use crate::{error::*, memory::*, registers::*, user_interface::*};
 
 #[derive(Debug, Default)]
 pub struct Chip8 {
