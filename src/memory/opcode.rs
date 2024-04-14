@@ -9,7 +9,20 @@ impl Opcode {
 
         return Self((most_significant << 8) | least_significant);
     }
+    /// - `self.nibbles[0]` most significant hexadecimal digit
+    /// - `self.nibbles[1]`
+    /// - `self.nibbles[2]`
+    /// - `self.nibbles[3]` least significant hexadecimal digit
+    pub fn nibbles(&self) -> [u8; 4] {
+        return [
+            (self.0 & 0xF000) as u8,
+            (self.0 & 0x0F00) as u8,
+            (self.0 & 0x00F0) as u8,
+            (self.0 & 0x000F) as u8,
+        ];
+    }
 }
+
 impl From<u16> for Opcode {
     fn from(value: u16) -> Self {
         return Self(value);
