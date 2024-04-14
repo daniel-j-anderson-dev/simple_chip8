@@ -1,6 +1,6 @@
 #![cfg(test)]
 
-use super::*;
+use crate::memory::Opcode;
 
 #[test]
 fn create_opcode() {
