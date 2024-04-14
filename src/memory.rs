@@ -1,4 +1,4 @@
-//! This module contains the definitions of [Memory], [AddressStack], and [Opcode]
+//! This module contains the definitions of [Memory], [CallStack], and [Opcode]
 
 pub mod opcode;
 pub mod stack;

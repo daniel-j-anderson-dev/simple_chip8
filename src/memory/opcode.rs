@@ -6,6 +6,9 @@ use std::ops::{Deref, DerefMut};
 /// This struct is a wrapper around a [u16] value. It can easily be split up into nibbles and different arguments of an opcode.
 pub struct Opcode(u16);
 impl Opcode {
+    /// Merges two bytes into an [Opcode] <br>
+    /// this is done by casting each byte as a [u16].
+    /// Then the most significant is bit shifted left by 8 and bitwise or'ed with least significant bit.
     pub fn merge_bytes(most_significant: u8, least_significant: u8) -> Opcode {
         let most_significant = most_significant as u16;
         let least_significant = least_significant as u16;
