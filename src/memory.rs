@@ -10,8 +10,9 @@ use std::ops::{Deref, DerefMut};
 #[derive(Debug)]
 /// This struct represents the internal memory and program counter of a Chip8 interpreter
 /// - The capacity is fixed and must be known at compile time
+///   - Defaults to 4096 bytes
 /// - [Memory] can be [Deref]renceded as a u8 slice so all slice methods are available
-pub struct Memory<const CAPACITY: usize> {
+pub struct Memory<const CAPACITY: usize = 4096> {
     bytes: [u8; CAPACITY],
     program_counter: u16,
 }
