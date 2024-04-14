@@ -3,7 +3,6 @@ pub use self::opcode::*;
 
 use std::ops::{Deref, DerefMut};
 
-
 #[derive(Debug)]
 pub struct Memory<const CAPACITY: usize> {
     bytes: [u8; CAPACITY],
@@ -12,6 +11,9 @@ pub struct Memory<const CAPACITY: usize> {
 impl<const N: usize> Memory<N> {
     pub fn get_program_counter(&self) -> u16 {
         return self.program_counter;
+    }
+    pub fn get_program_counter_mut(&mut self) -> &mut u16 {
+        return &mut self.program_counter;
     }
     pub fn increment_program_counter(&mut self) -> Option<()> {
         self.program_counter = self.program_counter.checked_add(2)?;
@@ -25,6 +27,7 @@ impl<const N: usize> Memory<N> {
         return Some(current_instruction);
     }
 }
+
 impl<const N: usize> Deref for Memory<N> {
     type Target = [u8; N];
     fn deref(&self) -> &Self::Target {
