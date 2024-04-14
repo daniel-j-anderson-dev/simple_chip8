@@ -1,9 +1,11 @@
+pub mod display;
+pub mod keypad;
 pub mod memory;
 pub mod registers;
 pub mod stack;
 pub mod test;
 
-pub use crate::{memory::*, registers::*, stack::*};
+pub use crate::{display::*, memory::*, registers::*, stack::*, keypad::*};
 
 #[derive(Debug, Default)]
 pub struct Chip8 {
@@ -13,4 +15,6 @@ pub struct Chip8 {
     delay_timer: DelayTimer,
     v: VRegisters,
     i: IRegister,
+    display: Display<64, 32>,
+    keypad: Keypad,
 }
