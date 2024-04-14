@@ -21,6 +21,26 @@ impl Opcode {
             (self.0 & 0x000F) as u8,
         ];
     }
+    /// The second nibble. Used to look up one of the 16 registers (VX) from V0 through VF.
+    pub fn x(&self) -> u8 {
+        return (self.0 & 0x0F00) as u8;
+    }
+    /// The third nibble. Also used to look up one of the 16 registers (VY) from V0 through VF.
+    pub fn y(&self) -> u8 {
+        return (self.0 & 0x00F0) as u8;
+    }
+    /// The fourth nibble. A 4-bit number.
+    pub fn n(&self) -> u8 {
+        return (self.0 & 0x000F) as u8;
+    }
+    /// The second byte (third and fourth nibbles). An 8-bit immediate number
+    pub fn nn(&self) -> u8 {
+        return (self.0 & 0x00FF) as u8;
+    }
+    /// The second, third and fourth nibbles. A 12-bit immediate memory address.
+    pub fn nnn(&self) -> u16 {
+        return self.0 & 0x0FFF;
+    }
 }
 
 impl From<u16> for Opcode {
