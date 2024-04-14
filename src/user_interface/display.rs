@@ -1,7 +1,7 @@
 use std::ops::{Deref, DerefMut};
 
 #[derive(Debug)]
-pub struct Display<const WIDTH: usize, const HEIGHT: usize>([[bool; WIDTH]; HEIGHT]);
+pub struct Display<const WIDTH: usize = 64, const HEIGHT: usize = 32>([[bool; WIDTH]; HEIGHT]);
 
 impl<const W: usize, const H: usize> Deref for Display<W, H> {
     type Target = [[bool; W]; H];
